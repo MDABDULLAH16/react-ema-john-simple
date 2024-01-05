@@ -1,0 +1,24 @@
+.product-container img {
+  height: 286px;
+  border-radius: 8px;
+  margin: 7px;
+}
+.product-container {
+  border-radius: 8px;
+  border: 1px solid #95a0a7;
+}
+.product-info h6 {
+  margin: 0;
+}
+.product-info {
+  margin-left: 10px;
+}
+.btn-cart {
+  border-radius: 0px 0px 8px 8px;
+  border: 1px solid #95a0a7;
+  background: #ffe0b3;
+  width: 100%;
+}
+.btn-cart:hover {
+  background-color: salmon;
+}
