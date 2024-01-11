@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import "./Products.css";
 import Product from "../Product/Product";
 import Cart from "../Cart/Cart";
-import { addToDb } from "../../utilities/fakedb";
+import { addToDb, getShoppingCart } from "../../utilities/fakedb";
 
 const Products = () => {
   const [products, setProducts] = useState([]);
@@ -10,10 +10,29 @@ const Products = () => {
 
   //load data
   useEffect(() => {
-    fetch("products.json")
+    fetch(
+      "https://raw.githubusercontent.com/ProgrammingHero1/ema-john-resources/main/fakeData/products.json"
+    )
       .then((res) => res.json())
       .then((data) => setProducts(data));
   }, []);
+  useEffect(() => {
+    const storedCart = getShoppingCart();
+    const savedCart = [];
+    //1. get localStorage saved object with (for in loop)
+    for (const id in storedCart) {
+      //2. get item with id in main products
+      const addedProduct = products.find((product) => product.id === id);
+      //get quantity from object
+      if (addedProduct) {
+        const quantity = storedCart[id];
+        //set quantity
+        addedProduct.quantity = quantity;
+        savedCart.push(addedProduct);
+      }
+    }
+    setCart(savedCart);
+  }, [products]); //dependency for get main array;
 
   //add to cart
   const handelAddToCart = (product) => {
