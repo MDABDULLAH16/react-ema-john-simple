@@ -9,3 +9,7 @@
   position: sticky;
   top: 80px;
 }
+.btn-clear-cart {
+  background-color: rgba(255, 48, 48, 1);
+  color: white;
+}
