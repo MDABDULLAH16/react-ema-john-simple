@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import Cart from "../Cart/Cart";
 import ReviewItem from "../../ReviewItem/ReviewItem";
 import "./Order.css";
@@ -18,7 +18,10 @@ const Order = () => {
     setCart([]);
     deleteShoppingCart();
   };
-
+  const navigate = useNavigate();
+  const handleCheckOut = () => {
+    navigate("/checkOut");
+  };
   return (
     <div className="main-container">
       <div className="review-item-container">
@@ -30,7 +33,13 @@ const Order = () => {
         ))}
       </div>
       <div className="cart-container">
-        <Cart cart={cart} handleClearCart={handleClearCart}></Cart>
+        <Cart cart={cart} handleClearCart={handleClearCart}>
+          <div>
+            <button onClick={handleCheckOut} className="btn-cheek-out">
+              Cheek Out
+            </button>
+          </div>
+        </Cart>
       </div>
     </div>
   );

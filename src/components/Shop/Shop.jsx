@@ -7,6 +7,7 @@ import {
   deleteShoppingCart,
   getShoppingCart,
 } from "../../utilities/fakedb";
+import { useNavigate } from "react-router-dom";
 
 const Shop = () => {
   const [products, setProducts] = useState([]);
@@ -50,6 +51,10 @@ const Shop = () => {
     addToDb(product.id);
   };
 
+  const navigate = useNavigate();
+  const handleOrderReview = () => {
+    navigate("/orders");
+  };
   return (
     <div className="main-container">
       <div className="products-container">
@@ -62,7 +67,13 @@ const Shop = () => {
         ))}
       </div>
       <div className="cart-container">
-        <Cart cart={cart} handleClearCart={handleClearCart}></Cart>
+        <Cart cart={cart} handleClearCart={handleClearCart}>
+          <div>
+            <button onClick={handleOrderReview} className="btn-order-review">
+              Order Review
+            </button>
+          </div>
+        </Cart>
       </div>
     </div>
   );
