@@ -1,0 +1,46 @@
+.review-item img {
+  width: 91px;
+  height: 91px;
+}
+.review-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  border: 1px solid #95a0a7;
+  width: 571px;
+  /* height: 107px; */
+  margin: 21px;
+  padding: 8px;
+}
+.review-info {
+  flex-grow: 1;
+
+  margin: 0 15px;
+}
+.item-title {
+  font-family: Lato;
+  font-size: 21px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 0.032px;
+  margin: 0;
+}
+.review-info p {
+  margin: 0;
+}
+.orange-color {
+  color: orange;
+}
+
+.btn-delete {
+  height: 37px;
+  width: 37px;
+  border-radius: 50%;
+  color: rgba(235, 87, 87, 1);
+  background-color: rgba(235, 87, 87, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

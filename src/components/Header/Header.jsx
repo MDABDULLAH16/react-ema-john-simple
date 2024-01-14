@@ -10,9 +10,10 @@ const Header = () => {
         </ActiveLInk>
       </div>
       <div className="header-link">
-        <ActiveLInk to="/order">Order </ActiveLInk>
-        <ActiveLInk to="/orderReview">Order Review </ActiveLInk>
-        <ActiveLInk to="/manageInventory">Manage Inventory </ActiveLInk>
+        {/* <ActiveLInk to="/orderReview">Order Review </ActiveLInk> */}
+        <ActiveLInk to="/shop">Shop</ActiveLInk>
+        <ActiveLInk to="/orders">Orders</ActiveLInk>
+        <ActiveLInk to="/inventory">Inventory</ActiveLInk>
         <ActiveLInk to="/login">Login</ActiveLInk>
       </div>
     </nav>

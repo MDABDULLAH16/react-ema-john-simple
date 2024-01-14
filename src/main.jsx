@@ -9,6 +9,7 @@ import Order from "./components/Order/Order.jsx";
 import OrderReview from "./components/OrderReview/OrderReview.jsx";
 import ManageInventory from "./components/ManageInventory/ManageInventory.jsx";
 import Login from "./components/Login/Login.jsx";
+import cartProductsLoader from "./CartProductsLoader/CartProductLoader.js";
 
 const router = createBrowserRouter([
   {
@@ -16,10 +17,16 @@ const router = createBrowserRouter([
     element: <Home></Home>,
     children: [
       { path: "/", element: <Shop></Shop> },
-      { path: "/order", element: <Order></Order> },
-      { path: "/orderReview", element: <OrderReview></OrderReview> },
+      { path: "/shop", element: <Shop></Shop> },
       {
-        path: "/manageInventory",
+        path: "/orders",
+        element: <Order></Order>,
+        // loader: () => fetch("products.json"),
+        loader: cartProductsLoader,
+      },
+      // { path: "/orderReview", element: <OrderReview></OrderReview> },
+      {
+        path: "/inventory",
         element: <ManageInventory></ManageInventory>,
       },
       { path: "/login", element: <Login></Login> },
