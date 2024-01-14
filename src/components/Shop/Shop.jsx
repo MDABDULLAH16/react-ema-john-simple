@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
-import "./Products.css";
+import "./Shop.css";
 import Product from "../Product/Product";
 import Cart from "../Cart/Cart";
 import { addToDb, getShoppingCart } from "../../utilities/fakedb";
 
-const Products = () => {
+const Shop = () => {
   const [products, setProducts] = useState([]);
   const [cart, setCart] = useState([]);
 
@@ -59,4 +59,4 @@ const Products = () => {
   );
 };
 
-export default Products;
+export default Shop;

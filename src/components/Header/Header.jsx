@@ -1,16 +1,19 @@
+import ActiveLInk from "../ActiveLink/ActiveLInk";
 import "./Header.css";
 
 const Header = () => {
   return (
     <nav className="header-container">
       <div className="header-img">
-        <img src="../../../public/Logo.svg" alt="" />
+        <ActiveLInk href="/">
+          <img src="../../../public/Logo.svg" alt="" />
+        </ActiveLInk>
       </div>
       <div className="header-link">
-        <a href="/order">Order </a>
-        <a href="/orderReview">Order Review </a>
-        <a href="/manageInventory">Manage Inventory </a>
-        <a href="/login">Login</a>
+        <ActiveLInk to="/order">Order </ActiveLInk>
+        <ActiveLInk to="/orderReview">Order Review </ActiveLInk>
+        <ActiveLInk to="/manageInventory">Manage Inventory </ActiveLInk>
+        <ActiveLInk to="/login">Login</ActiveLInk>
       </div>
     </nav>
   );
