@@ -15,6 +15,7 @@ const Login = () => {
         const loggedUser = result.user;
         console.log(loggedUser);
         toast("user Login Done!!");
+        form.reset();
       })
       .catch((error) => {
         toast(error.message);
