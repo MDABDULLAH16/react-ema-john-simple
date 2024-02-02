@@ -1,11 +1,11 @@
 import React, { useContext } from "react";
 import "./SignUp.css";
 import { AuthContext } from "../../Provider/AuthProvider";
-import { updateProfile } from "firebase/auth";
+import { sendEmailVerification, updateProfile } from "firebase/auth";
 import toast, { Toaster } from "react-hot-toast";
 
 const SignUp = () => {
-  const { createUser, userDisplayName } = useContext(AuthContext);
+  const { createUser } = useContext(AuthContext);
 
   const handleCreateUser = (event) => {
     event.preventDefault();
@@ -26,13 +26,16 @@ const SignUp = () => {
     createUser(email, password)
       .then((result) => {
         const createUser = result.user;
+        handleVarifiedEmail(result.user);
         handleDisplayName(createUser, name);
         console.log(createUser);
         toast("User create Done!!");
+        form.reset();
       })
       .catch((error) => {
         console.error(error.message);
         toast(error.message);
+        form.reset();
       });
   };
 
@@ -41,6 +44,16 @@ const SignUp = () => {
       displayName: name,
     });
   };
+  const handleVarifiedEmail = (email) => {
+    sendEmailVerification(email)
+      .then((result) => {
+        console.log(result);
+        toast("Check Your Email Please!!");
+      })
+      .catch((error) => {
+        toast(error.message);
+      });
+  };
 
   return (
     <div className='sign-up-container'>
@@ -48,19 +61,19 @@ const SignUp = () => {
         <h2>Sign Up</h2>
         <Toaster></Toaster>
         <div className='form-group'>
-          <label for='name'>Name:</label>
+          <label htmlFor='name'>Name:</label>
           <input type='text' id='name' name='name' required />
         </div>
         <div className='form-group'>
-          <label for='email'>Email:</label>
+          <label htmlFor='email'>Email:</label>
           <input type='email' id='email' name='email' required />
         </div>
         <div className='form-group'>
-          <label for='password'>Password:</label>
+          <label htmlFor='password'>Password:</label>
           <input type='password' id='password' name='password' required />
         </div>
         <div className='form-group'>
-          <label for='confirm'>Confirm Password:</label>
+          <label htmlFor='confirm'>Confirm Password:</label>
           <input type='password' id='confirm' name='confirm' required />
         </div>
         <button className='btn-signUp' type='submit'>
